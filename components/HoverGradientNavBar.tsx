@@ -57,7 +57,7 @@ const sharedTransition = {
 
 export function HoverGradientNavBar(): React.JSX.Element {
   return (
-    <div className="absolute top-6 left-0 w-full md:left-1/2 md:-translate-x-1/2 z-50">
+    <div className="hidden md:block absolute top-6 left-0 w-full md:left-1/2 md:-translate-x-1/2 z-50">
       <motion.nav
         className="w-[92%] md:w-fit mx-auto px-1.5 md:px-3 py-1.5 md:py-2 rounded-xl md:rounded-2xl 
         bg-white/95 dark:bg-black/90 backdrop-blur-lg 

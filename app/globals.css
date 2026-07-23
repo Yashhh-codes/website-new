@@ -513,3 +513,9 @@ img[src="data:,"],source[src="data:,"]{display:none!important}
     transform: translateY(0);
   }
 }
+
+@media (max-width: 768px) {
+  .Header_Header__uvvBy {
+    display: none !important;
+  }
+}

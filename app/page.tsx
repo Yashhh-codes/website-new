@@ -4,6 +4,7 @@ import LandingAccordionItem from "@/components/LandingAccordionItem";
 import ContributorsWall from "@/components/ContributorsWall";
 import ServicesFanHover from "@/components/ServicesFanHover";
 import HoverGradientNavBar from "@/components/HoverGradientNavBar";
+import MobileFloatingMenu from "@/components/MobileFloatingMenu";
 import ZoomParallax from "@/components/ZoomParallax";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ScrollReelSection from "@/components/ScrollReelSection";
@@ -36,23 +37,24 @@ export default function Home() {
           dangerouslySetInnerHTML={{ __html: heroHtml }}
         />
         <HoverGradientNavBar />
+        <MobileFloatingMenu />
       </div>
-      <div className="relative z-20 bg-[#FAF9F6]">
+      <div id="studio" className="relative z-20 bg-[#FAF9F6]">
         <LandingAccordionItem />
       </div>
       <div className="relative z-20">
         <ContributorsWall />
       </div>
-      <div className="relative z-20">
+      <div id="services" className="relative z-20">
         <ServicesFanHover />
       </div>
-      <div className="relative z-20">
+      <div id="projects" className="relative z-20">
         <ZoomParallax />
       </div>
-      <div className="relative z-20">
+      <div id="sectors" className="relative z-20">
         <IndustryGrid />
       </div>
-      <div className="relative z-20">
+      <div id="insights" className="relative z-20">
         <TestimonialsSection />
       </div>
       <div className="relative z-20 h-[30vh] min-h-[250px] w-full overflow-hidden bg-[#FAF9F6]">
