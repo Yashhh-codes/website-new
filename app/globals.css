@@ -459,15 +459,25 @@ img[src="data:,"],source[src="data:,"]{display:none!important}
 }
 
 .footer-giant-bg-text {
-  font-size: 26vw;
+  font-size: clamp(5rem, 24vw, 24rem);
   line-height: 0.75;
   font-weight: 900;
   letter-spacing: -0.05em;
   color: transparent;
-  -webkit-text-stroke: 1px color-mix(in oklch, var(--foreground, #09090b) 5%, transparent);
-  background: linear-gradient(180deg, color-mix(in oklch, var(--foreground, #09090b) 10%, transparent) 0%, transparent 60%);
+  -webkit-text-stroke: 1.5px color-mix(in oklch, var(--foreground, #09090b) 12%, transparent);
+  background: linear-gradient(180deg, color-mix(in oklch, var(--foreground, #09090b) 15%, transparent) 0%, transparent 75%);
   -webkit-background-clip: text;
   background-clip: text;
+  bottom: -2.5vw !important;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 95%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 95%);
+}
+
+@media (max-width: 768px) {
+  .footer-giant-bg-text {
+    font-size: clamp(4rem, 24vw, 10rem);
+    bottom: -2.5vw !important;
+  }
 }
 
 .footer-text-glow {
