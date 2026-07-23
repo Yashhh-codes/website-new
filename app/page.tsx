@@ -27,7 +27,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="w-full min-h-screen bg-white text-slate-900">
+    <main className="w-full min-h-screen bg-[#FAF9F6] text-slate-900">
       <div className="relative w-full">
         <div
           ref={containerRef}
@@ -36,7 +36,7 @@ export default function Home() {
         />
         <HoverGradientNavBar />
       </div>
-      <div className="relative z-20 bg-white py-12">
+      <div className="relative z-20 bg-[#FAF9F6]">
         <LandingAccordionItem />
       </div>
       <div className="relative z-20">
@@ -54,7 +54,7 @@ export default function Home() {
       <div className="relative z-20">
         <TestimonialsSection />
       </div>
-      <div className="relative z-20 h-[30vh] min-h-[250px] w-full overflow-hidden">
+      <div className="relative z-20 h-[30vh] min-h-[250px] w-full overflow-hidden bg-[#FAF9F6]">
         <PerspectiveMarquee />
       </div>
       <div className="relative z-20">
