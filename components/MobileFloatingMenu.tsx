@@ -51,10 +51,10 @@ export function MobileFloatingMenu() {
           aria-label="Open menu"
           className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 
           flex items-center gap-3 px-6 py-3 rounded-full 
-          bg-zinc-800/80 backdrop-blur-md border border-white/10
+          bg-zinc-950/40 backdrop-blur-xl border border-white/15
           shadow-[0_12px_40px_-10px_rgba(0,0,0,0.3)] text-white/95 
           font-semibold text-xs tracking-[0.25em] select-none cursor-pointer uppercase 
-          hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none"
+          hover:scale-105 hover:bg-zinc-900/50 hover:border-white/25 active:scale-95 transition-all duration-300 focus:outline-none"
           style={{ bottom: "calc(1.5rem + env(safe-area-inset-bottom))" }}
         >
           <span>Menu</span>
@@ -160,10 +160,10 @@ export function MobileFloatingMenu() {
               aria-label="Close menu"
               className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60]
               flex items-center gap-2 px-6 py-3 rounded-full 
-              bg-zinc-800/80 backdrop-blur-md border border-white/10
+              bg-zinc-950/40 backdrop-blur-xl border border-white/15
               shadow-[0_12px_40px_-10px_rgba(0,0,0,0.3)] text-white/95 
               font-semibold text-xs tracking-[0.25em] select-none cursor-pointer uppercase 
-              hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none"
+              hover:scale-105 hover:bg-zinc-900/50 hover:border-white/25 active:scale-95 transition-all duration-300 focus:outline-none"
               style={{ bottom: "calc(1.5rem + env(safe-area-inset-bottom))" }}
             >
               <span>Close</span>
