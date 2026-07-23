@@ -477,6 +477,11 @@ img[src="data:,"],source[src="data:,"]{display:none!important}
   .footer-giant-bg-text {
     font-size: clamp(4rem, 24vw, 10rem);
     bottom: -2.5vw !important;
+    background: linear-gradient(180deg, color-mix(in oklch, var(--foreground, #09090b) 15%, transparent) 0%, transparent 88%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 98%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 98%);
   }
 }
 
