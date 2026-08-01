@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Sparkles, CheckCircle2, RefreshCw, Fingerprint, Printer, Code2, TrendingUp, Palette, Box, Film, Gift } from "lucide-react";
 import { heroHtml } from "../page";
 import HoverGradientNavBar from "@/components/HoverGradientNavBar";
@@ -85,6 +85,67 @@ const servicesList: ServiceItem[] = [
   },
 ];
 
+interface ServiceRowProps {
+  rowCards: ServiceItem[];
+  rowIndex: number;
+  cols: number;
+}
+
+function ServiceRow({ rowCards, rowIndex, cols }: ServiceRowProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const direction = rowIndex % 2 === 0 ? 1 : -1;
+  const initialXValue = direction === 1 ? "100vw" : "-100vw";
+  const x = useTransform(scrollYProgress, [0, 0.45], [initialXValue, "0vw"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.35], [0, 1]);
+
+  return (
+    <div ref={ref} className="w-full overflow-hidden">
+      <motion.div
+        style={{ x, opacity, willChange: "transform, opacity" }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
+        {rowCards.map((service) => (
+          <motion.div
+            key={service.slug}
+            whileHover={{ y: -8, scale: 1.015, boxShadow: `0 20px 40px ${service.color.replace('0.1', '0.25')}` }}
+            className="group relative flex flex-col justify-between p-8 rounded-2xl bg-white border border-black/5 hover:border-black/10 transition-all duration-300 min-h-[280px] cursor-pointer"
+          >
+            <div className="absolute top-0 right-0 w-24 h-24 rounded-bl-3xl rounded-tr-2xl transition-all duration-500 pointer-events-none group-hover:scale-125 group-hover:rotate-6" style={{ backgroundColor: service.color }} />
+            
+            <div>
+              <div className="text-[11px] font-bold uppercase tracking-widest text-zinc-400 mb-3 group-hover:text-zinc-500 transition-colors duration-300">
+                {service.tag}
+              </div>
+              <h3 className="text-2xl font-black text-zinc-800 tracking-tight group-hover:text-pink-500 transition-colors duration-300">
+                {service.title}
+              </h3>
+              <p className="text-zinc-500 text-sm mt-3 leading-relaxed max-w-[90%] transition-colors duration-300">
+                {service.description}
+              </p>
+            </div>
+
+            <div className="flex items-center justify-between mt-8 pt-4 border-t border-black/5">
+              <span className="text-xs font-semibold text-zinc-400">{service.count}</span>
+              <Link
+                href={`/services/${service.slug}`}
+                className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-800 hover:text-pink-500 transition-colors duration-200"
+              >
+                Explore Service
+                <ArrowRight className="w-4 h-4 text-pink-500 group-hover:translate-x-2 transition-transform duration-300 ease-out" />
+              </Link>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
+    </div>
+  );
+}
+
 export default function ServicesClient() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [cols, setCols] = useState(3);
@@ -116,14 +177,16 @@ export default function ServicesClient() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const headerHtml = heroHtml.split("</header>")[0] + "</header>";
+
   return (
-    <main className="w-full min-h-screen bg-[#FAF9F6] text-slate-900 font-sans">
+    <main className="w-full min-h-screen bg-[#FAF9F6] text-slate-900 font-sans overflow-x-hidden">
       {/* Exact Same Header Shell */}
       <div className="relative w-full">
         <div
           ref={containerRef}
           className="w-full relative singlefile-root"
-          dangerouslySetInnerHTML={{ __html: heroHtml }}
+          dangerouslySetInnerHTML={{ __html: headerHtml }}
         />
         <HoverGradientNavBar />
         <MobileFloatingMenu />
@@ -229,51 +292,21 @@ export default function ServicesClient() {
 
       {/* Services Grid Section */}
       <section id="capabilities" className="relative z-10 px-6 py-12 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {servicesList.map((service, index) => {
-            const rowIndex = Math.floor(index / cols);
-            const colIndex = index % cols;
-            const direction = rowIndex % 2 === 0 ? 1 : -1; // Even rows slide in from the right (1), odd rows from the left (-1)
-            const initialX = direction * 120;
-            const staggerDelay = colIndex * 0.12;
-
-            return (
-              <motion.div
-                key={service.slug}
-                initial={{ opacity: 0, x: initialX }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.8, ease: "easeOut", delay: staggerDelay }}
-                whileHover={{ y: -8, scale: 1.015, boxShadow: `0 20px 40px ${service.color.replace('0.1', '0.25')}` }}
-                className="group relative flex flex-col justify-between p-8 rounded-2xl bg-white border border-black/5 hover:border-black/10 transition-all duration-300 min-h-[280px] cursor-pointer"
-              >
-                <div className="absolute top-0 right-0 w-24 h-24 rounded-bl-3xl rounded-tr-2xl transition-all duration-500 pointer-events-none group-hover:scale-125 group-hover:rotate-6" style={{ backgroundColor: service.color }} />
-                
-                <div>
-                  <div className="text-[11px] font-bold uppercase tracking-widest text-zinc-400 mb-3 group-hover:text-zinc-500 transition-colors duration-300">
-                    {service.tag}
-                  </div>
-                  <h3 className="text-2xl font-black text-zinc-800 tracking-tight group-hover:text-pink-500 transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  <p className="text-zinc-500 text-sm mt-3 leading-relaxed max-w-[90%] transition-colors duration-300">
-                    {service.description}
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-between mt-8 pt-4 border-t border-black/5">
-                  <span className="text-xs font-semibold text-zinc-400">{service.count}</span>
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-800 hover:text-pink-500 transition-colors duration-200"
-                  >
-                    Explore Service
-                    <ArrowRight className="w-4 h-4 text-pink-500 group-hover:translate-x-2 transition-transform duration-300 ease-out" />
-                  </Link>
-                </div>
-              </motion.div>
-            );
-          })}
+        <div className="flex flex-col gap-8">
+          {(() => {
+            const rows = [];
+            for (let i = 0; i < servicesList.length; i += cols) {
+              rows.push(servicesList.slice(i, i + cols));
+            }
+            return rows.map((rowCards, rowIndex) => (
+              <ServiceRow
+                key={rowIndex}
+                rowCards={rowCards}
+                rowIndex={rowIndex}
+                cols={cols}
+              />
+            ));
+          })()}
         </div>
       </section>
 
