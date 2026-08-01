@@ -225,14 +225,19 @@ export function CinematicFooter() {
 
               {/* Secondary nav pills */}
               <div className="flex flex-wrap justify-center gap-3 md:gap-6 w-full mt-2">
-                {["Work", "Services", "About", "Privacy Policy"].map((label) => (
+                {[
+                  { label: "Work", href: "#" },
+                  { label: "Services", href: "/services" },
+                  { label: "About", href: "#" },
+                  { label: "Privacy Policy", href: "#" }
+                ].map((item) => (
                   <MagneticButton
-                    key={label}
+                    key={item.label}
                     as="a"
-                    href="#"
+                    href={item.href}
                     className="footer-glass-pill px-6 py-3 rounded-full text-zinc-500 font-medium text-xs md:text-sm hover:text-zinc-800"
                   >
-                    {label}
+                    {item.label}
                   </MagneticButton>
                 ))}
               </div>

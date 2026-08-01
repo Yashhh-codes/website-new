@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
-import { Home, Settings, Bell, User, Mail, BarChart3, HelpCircle, LogOut } from 'lucide-react';
+import { Home, Briefcase, Folder, Compass, Layers, MessageSquare } from 'lucide-react';
 
 // --- HoverGradientNavBar Component ---
 
@@ -15,14 +15,12 @@ interface HoverGradientMenuItem {
 }
 
 const menuItems: HoverGradientMenuItem[] = [
-  { icon: <Home className="h-4 w-4" />, label: "Home", href: "#", gradient: "radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(37,99,235,0.06) 50%, rgba(29,78,216,0) 100%)", iconColor: "group-hover:text-blue-500 dark:group-hover:text-blue-400" },
-  { icon: <Bell className="h-4 w-4" />, label: "Notifications", href: "#", gradient: "radial-gradient(circle, rgba(249,115,22,0.15) 0%, rgba(234,88,12,0.06) 50%, rgba(194,65,12,0) 100%)", iconColor: "group-hover:text-orange-500 dark:group-hover:text-orange-400" },
-  { icon: <Mail className="h-4 w-4" />, label: "Messages", href: "#", gradient: "radial-gradient(circle, rgba(147,51,234,0.15) 0%, rgba(126,34,206,0.06) 50%, rgba(88,28,135,0) 100%)", iconColor: "group-hover:text-purple-500 dark:group-hover:text-purple-400" },
-  { icon: <BarChart3 className="h-4 w-4" />, label: "Analytics", href: "#", gradient: "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)", iconColor: "group-hover:text-green-500 dark:group-hover:text-green-400" },
-  { icon: <Settings className="h-4 w-4" />, label: "Settings", href: "#", gradient: "radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(37,99,235,0.06) 50%, rgba(29,78,216,0) 100%)", iconColor: "group-hover:text-blue-500 dark:group-hover:text-blue-400" },
-  { icon: <User className="h-4 w-4" />, label: "Profile", href: "#", gradient: "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)", iconColor: "group-hover:text-red-500 dark:group-hover:text-red-400" },
-  { icon: <HelpCircle className="h-4 w-4" />, label: "Help", href: "#", gradient: "radial-gradient(circle, rgba(20,184,166,0.15) 0%, rgba(13,148,136,0.06) 50%, rgba(15,118,110,0) 100%)", iconColor: "group-hover:text-teal-500 dark:group-hover:text-teal-400" },
-  { icon: <LogOut className="h-4 w-4" />, label: "Logout", href: "#", gradient: "radial-gradient(circle, rgba(161,98,7,0.15) 0%, rgba(133,77,14,0.06) 50%, rgba(100,62,8,0) 100%)", iconColor: "group-hover:text-amber-600 dark:group-hover:text-amber-400" },
+  { icon: <Home className="h-4 w-4" />, label: "Home", href: "/", gradient: "radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(37,99,235,0.06) 50%, rgba(29,78,216,0) 100%)", iconColor: "group-hover:text-blue-500 dark:group-hover:text-blue-400" },
+  { icon: <Briefcase className="h-4 w-4" />, label: "Services", href: "/services", gradient: "radial-gradient(circle, rgba(236,72,153,0.15) 0%, rgba(219,39,119,0.06) 50%, rgba(190,24,93,0) 100%)", iconColor: "group-hover:text-pink-500 dark:group-hover:text-pink-400" },
+  { icon: <Folder className="h-4 w-4" />, label: "Projects", href: "/#projects", gradient: "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)", iconColor: "group-hover:text-green-500 dark:group-hover:text-green-400" },
+  { icon: <Compass className="h-4 w-4" />, label: "Studio", href: "/#studio", gradient: "radial-gradient(circle, rgba(249,115,22,0.15) 0%, rgba(234,88,12,0.06) 50%, rgba(194,65,12,0) 100%)", iconColor: "group-hover:text-orange-500 dark:group-hover:text-orange-400" },
+  { icon: <Layers className="h-4 w-4" />, label: "Sectors", href: "/#sectors", gradient: "radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(37,99,235,0.06) 50%, rgba(29,78,216,0) 100%)", iconColor: "group-hover:text-blue-500 dark:group-hover:text-blue-400" },
+  { icon: <MessageSquare className="h-4 w-4" />, label: "Insights", href: "/#insights", gradient: "radial-gradient(circle, rgba(147,51,234,0.15) 0%, rgba(126,34,206,0.06) 50%, rgba(88,28,135,0) 100%)", iconColor: "group-hover:text-purple-500 dark:group-hover:text-purple-400" },
 ];
 
 // Animation variants

@@ -5,11 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MoreVertical, X } from "lucide-react";
 
 const menuItems = [
-  { label: "Projects", href: "#projects" },
-  { label: "Services", href: "#services" },
-  { label: "Studio", href: "#studio" },
-  { label: "Sectors", href: "#sectors" },
-  { label: "Insights", href: "#insights" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Services", href: "/services" },
+  { label: "Studio", href: "/#studio" },
+  { label: "Sectors", href: "/#sectors" },
+  { label: "Insights", href: "/#insights" },
 ] as const;
 
 export function MobileFloatingMenu() {
